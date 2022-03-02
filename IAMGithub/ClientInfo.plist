@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>IAMGithub.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
-		</dict>
-	</dict>
+	<key>client_id</key>
+	<string>8c0104657d0ae20a5f7f</string>
+	<key>client_secrets</key>
+	<string>780e4b9d1c53cdc216d2b30976f5e8912eab0cff</string>
 </dict>
 </plist>
