@@ -11,6 +11,7 @@ import Moya
 
 protocol UserAPIProtocol {
     func populateUserData(accessToken: String) -> Observable<UserResponse?>
+    func populateUserRepos(user: UserResponse) -> Observable<[UserReposResponse]?>
 }
 
 class UserAPI: UserAPIProtocol {
@@ -27,6 +28,23 @@ class UserAPI: UserAPIProtocol {
                         observer.onNext(userResponse)
                     case .failure(let error):
                         print("[populateUserData] error", error)
+                        observer.onError(error)
+                    }
+                }
+            return Disposables.create()
+        }
+    }
+
+    func populateUserRepos(user: UserResponse) -> Observable<[UserReposResponse]?> {
+        return Observable.create { observer in
+            self.service
+                .request(.populateUserRepos(user)) { result in
+                    switch result {
+                    case .success(let response):
+                        let userRepos = try? response.map([UserReposResponse].self)
+                        observer.onNext(userRepos)
+                    case .failure(let error):
+                        print("[populateUserRepos] error", error)
                         observer.onError(error)
                     }
                 }

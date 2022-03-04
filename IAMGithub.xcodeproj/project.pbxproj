@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		03B091647BEC52487C3FB0D0 /* Pods_IAMGithub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B470554EA661C7162C10B2 /* Pods_IAMGithub.framework */; };
+		B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BB27D22FA000F04925 /* UserReposResponse.swift */; };
+		B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */; };
+		B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */; };
 		B4523BC927CE11F100BF0204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523BC827CE11F100BF0204 /* AppDelegate.swift */; };
 		B4523BCB27CE11F100BF0204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523BCA27CE11F100BF0204 /* SceneDelegate.swift */; };
 		B4523BD227CE11F300BF0204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4523BD127CE11F300BF0204 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		A7CBEBAED8076C5052958824 /* Pods-IAMGithub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAMGithub.release.xcconfig"; path = "Target Support Files/Pods-IAMGithub/Pods-IAMGithub.release.xcconfig"; sourceTree = "<group>"; };
+		B44F22BB27D22FA000F04925 /* UserReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReposResponse.swift; sourceTree = "<group>"; };
+		B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
 		B4523BC527CE11F100BF0204 /* IAMGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAMGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4523BC827CE11F100BF0204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4523BCA27CE11F100BF0204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B44F22BD27D23B1300F04925 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B4523BBC27CE11F100BF0204 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +128,7 @@
 		B4523BC727CE11F100BF0204 /* IAMGithub */ = {
 			isa = PBXGroup;
 			children = (
+				B44F22BD27D23B1300F04925 /* View */,
 				B4523BDD27CE143D00BF0204 /* Presentation */,
 				B45CB21B27CE21D5005399DA /* Network */,
 				B45CB22327CE2240005399DA /* Service */,
@@ -200,6 +215,7 @@
 				B45CB24027CE28ED005399DA /* UIBarButtonItem+Extension.swift */,
 				B45CB24427CE2998005399DA /* UIAlert+Extension.swift */,
 				B45CB24C27CE5764005399DA /* Keychain+Extension.swift */,
+				B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -218,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				B45CB23827CE24E3005399DA /* UserResponse.swift */,
+				B44F22BB27D22FA000F04925 /* UserReposResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,12 +357,14 @@
 				B45CB24527CE2998005399DA /* UIAlert+Extension.swift in Sources */,
 				B45CB24B27CE2BE1005399DA /* ProfileViewModel.swift in Sources */,
 				B45CB23527CE24BF005399DA /* UIImageView+Extension.swift in Sources */,
+				B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */,
 				B45CB22027CE21F9005399DA /* OAuthTarget.swift in Sources */,
 				B45CB24327CE2924005399DA /* Helper.swift in Sources */,
 				B45CB22E27CE233A005399DA /* AccesstokenRequest.swift in Sources */,
 				B45CB22527CE224A005399DA /* Bundle.swift in Sources */,
 				B45CB22227CE2202005399DA /* OAuthAPI.swift in Sources */,
 				B4523BC927CE11F100BF0204 /* AppDelegate.swift in Sources */,
+				B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */,
 				B45CB23D27CE27BF005399DA /* HTTPStatusCode.swift in Sources */,
 				B4523BE027CE145C00BF0204 /* ProfileViewController.swift in Sources */,
 				B45CB24727CE2B73005399DA /* UserTarget.swift in Sources */,
@@ -353,6 +372,7 @@
 				B4523BCB27CE11F100BF0204 /* SceneDelegate.swift in Sources */,
 				B45CB24127CE28ED005399DA /* UIBarButtonItem+Extension.swift in Sources */,
 				B45CB24D27CE5764005399DA /* Keychain+Extension.swift in Sources */,
+				B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */,
 				B45CB23F27CE280B005399DA /* NetworkError.swift in Sources */,
 				B45CB23927CE24E3005399DA /* UserResponse.swift in Sources */,
 				B45CB23B27CE251B005399DA /* Constants.swift in Sources */,
