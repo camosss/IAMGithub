@@ -16,3 +16,9 @@ extension UITableViewCell: ReusableView {
         return String(describing: self)
     }
 }
+
+extension UITableViewHeaderFooterView: ReusableView {
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}

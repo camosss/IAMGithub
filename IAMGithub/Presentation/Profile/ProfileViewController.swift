@@ -7,17 +7,34 @@
 
 import UIKit
 
-import RxSwift
 import RxCocoa
+import RxDataSources
+import RxSwift
 
 class ProfileViewController: UIViewController {
 
     // MARK: - Properties
 
-    var viewModel = ProfileViewModel()
-    let disposeBag = DisposeBag()
+    private var viewModel = ProfileViewModel()
+    private let disposeBag = DisposeBag()
 
-    let tableView = UITableView()
+    private let headerView = ProfileHeaderView()
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<ProfileSection.ProfileSectionModel>(
+        configureCell: { [weak self] dataSource, tableView, indexPath, item in
+            guard let self = self else { return UITableViewCell() }
+            switch item {
+            case .firstItem(let item):
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: RepositoryTableViewCell.reuseIdentifier
+                ) as! RepositoryTableViewCell
+
+                cell.updateUI(repo: item)
+                return cell
+            }
+        }
+    )
 
     // MARK: - Lifecycle
 
@@ -36,10 +53,11 @@ class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        tableView.register(
-            RepositoryTableViewCell.self,
-            forCellReuseIdentifier: RepositoryTableViewCell.reuseIdentifier
-        )
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        tableView.register(RepositoryTableViewCell.self,
+            forCellReuseIdentifier: RepositoryTableViewCell.reuseIdentifier)
+        tableView.register(ProfileHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: ProfileHeaderView.reuseIdentifier)
 
         binding()
     }
@@ -47,16 +65,41 @@ class ProfileViewController: UIViewController {
     private func binding() {
         viewModel.viewController = self
 
+        viewModel.user
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] user in
+                self?.headerView.updateUI(user: user)
+            })
+            .disposed(by: disposeBag)
+
         viewModel.repos
             .asDriver()
-            .drive(tableView.rx.items(
-                cellIdentifier: RepositoryTableViewCell.reuseIdentifier,
-                cellType: RepositoryTableViewCell.self
-            )) { index, item, cell in
-                cell.updateUI(repo: item)
+            .map { value in
+                return [ProfileSection.ProfileSectionModel(model: 0, items: value.map {
+                    ProfileSection.RepoItems.firstItem($0)
+                })]
             }
+            .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
 
         viewModel.populateUserData(accessToken: Token.accessToken)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
+        return headerView
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
+        return 180
     }
 }

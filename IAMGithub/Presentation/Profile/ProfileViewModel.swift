@@ -14,7 +14,7 @@ class ProfileViewModel {
 
     weak var viewController: ProfileViewController?
 
-    var user: UserResponse?
+    var user = PublishRelay<UserResponse>()
     var repos = BehaviorRelay<[UserReposResponse]>(value: [])
 
     private let userAPI: UserAPIProtocol
@@ -28,7 +28,7 @@ class ProfileViewModel {
         userAPI.populateUserData(accessToken: accessToken)
             .subscribe(onNext: { user in
                 if let user = user {
-                    self.user = user
+                    self.user.accept(user)
                     self.populateUserRepos(user: user)
                     self.viewController?.configureRightBarButtonItem(Token.accessToken, user)
                 } else {

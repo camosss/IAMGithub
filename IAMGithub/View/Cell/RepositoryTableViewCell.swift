@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class RepositoryTableViewCell: UITableViewCell {
+final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 

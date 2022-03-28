@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		03B091647BEC52487C3FB0D0 /* Pods_IAMGithub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B470554EA661C7162C10B2 /* Pods_IAMGithub.framework */; };
+		B434138527F1FF98005A58BE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138427F1FF98005A58BE /* ProfileHeaderView.swift */; };
+		B434138827F20F7D005A58BE /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138727F20F7D005A58BE /* ProfileSection.swift */; };
 		B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BB27D22FA000F04925 /* UserReposResponse.swift */; };
 		B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */; };
 		B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		A7CBEBAED8076C5052958824 /* Pods-IAMGithub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAMGithub.release.xcconfig"; path = "Target Support Files/Pods-IAMGithub/Pods-IAMGithub.release.xcconfig"; sourceTree = "<group>"; };
+		B434138427F1FF98005A58BE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		B434138727F20F7D005A58BE /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 		B44F22BB27D22FA000F04925 /* UserReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReposResponse.swift; sourceTree = "<group>"; };
 		B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
@@ -101,10 +105,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B434138627F20F42005A58BE /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				B434138727F20F7D005A58BE /* ProfileSection.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
 		B44F22BD27D23B1300F04925 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */,
+				B434138427F1FF98005A58BE /* ProfileHeaderView.swift */,
+				B4DCABBA27F1FEA70014B6FB /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 		B4523BDE27CE144100BF0204 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B434138627F20F42005A58BE /* Section */,
 				B4523BDF27CE145C00BF0204 /* ProfileViewController.swift */,
 				B45CB24A27CE2BE1005399DA /* ProfileViewModel.swift */,
 			);
@@ -256,6 +270,14 @@
 				B4DCABA527F19EB20014B6FB /* UIColor+Extension.swift */,
 			);
 			path = Extenstion;
+			sourceTree = "<group>";
+		};
+		B4DCABBA27F1FEA70014B6FB /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +398,7 @@
 				B45CB24527CE2998005399DA /* UIAlert+Extension.swift in Sources */,
 				B45CB24B27CE2BE1005399DA /* ProfileViewModel.swift in Sources */,
 				B45CB23527CE24BF005399DA /* UIImageView+Extension.swift in Sources */,
+				B434138827F20F7D005A58BE /* ProfileSection.swift in Sources */,
 				B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */,
 				B45CB22027CE21F9005399DA /* OAuthTarget.swift in Sources */,
 				B45CB24327CE2924005399DA /* Helper.swift in Sources */,
@@ -385,6 +408,7 @@
 				B4DCABA627F19EB20014B6FB /* UIColor+Extension.swift in Sources */,
 				B45CB22227CE2202005399DA /* OAuthAPI.swift in Sources */,
 				B4523BC927CE11F100BF0204 /* AppDelegate.swift in Sources */,
+				B434138527F1FF98005A58BE /* ProfileHeaderView.swift in Sources */,
 				B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */,
 				B4523BE027CE145C00BF0204 /* ProfileViewController.swift in Sources */,
 				B45CB24727CE2B73005399DA /* UserTarget.swift in Sources */,

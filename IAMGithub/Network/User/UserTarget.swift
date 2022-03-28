@@ -22,7 +22,7 @@ extension UserTarget: TargetType {
         case .populateUserData:
             return "user"
         case .populateUserRepos(let user):
-            return "users/\(user.login)/repos"
+            return "users/\(user.username)/repos"
         }
     }
 
