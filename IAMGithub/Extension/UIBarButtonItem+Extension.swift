@@ -16,7 +16,7 @@ extension UIViewController {
         let label = UILabel().then {
             $0.text = "Github"
             $0.textColor = UIColor.label
-            $0.font = Font.navigationTitle
+            $0.font = .navigationTitle
         }
 
         self.navigationItem.leftItemsSupplementBackButton = true

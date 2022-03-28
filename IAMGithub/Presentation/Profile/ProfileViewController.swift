@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.background
+        view.backgroundColor = .background
         configureLeftBarButtonItem()
         setUpTableView()
     }

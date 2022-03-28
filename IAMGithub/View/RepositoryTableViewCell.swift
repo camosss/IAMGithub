@@ -13,19 +13,19 @@ class RepositoryTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     let repoLabel = UILabel().then {
-        $0.textColor = Color.repoTitle
-        $0.font = Font.title
+        $0.textColor = .repoTitle
+        $0.font = .title
     }
 
     let repoDescriptionLabel = UILabel().then {
-        $0.textColor = Color.basic
-        $0.font = Font.body
+        $0.textColor = .basic
+        $0.font = .body
         $0.numberOfLines = 0
     }
 
     let dateLabel = UILabel().then {
-        $0.textColor = Color.gray
-        $0.font = Font.subBody
+        $0.textColor = .gray
+        $0.font = .subBody
     }
 
     lazy var stack = UIStackView(
