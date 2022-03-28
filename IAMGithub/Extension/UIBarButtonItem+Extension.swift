@@ -58,7 +58,7 @@ extension UIViewController {
         let scene = UIApplication.shared.connectedScenes.first
 
         if accessToken.isEmpty {
-            OAuthAPI.authorizeOnGithub()
+            OAuthAPI().authorizeOnGithub()
         } else {
             AlertHelper.actionSheetAlert(title: "Logout", completion: {
                 KeychainSwift().delete(keyEnum.accessToken.rawValue)

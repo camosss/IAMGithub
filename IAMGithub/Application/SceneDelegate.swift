@@ -42,20 +42,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         code: code
                     )
 
-                    OAuthAPI.populateAccesstoken(
-                        request: request
-                    ) { succeed, failed, statusCode in
-                        switch statusCode {
-                        case HTTPStatusCode.success.status:
-                            let accessToken = succeed?.accessToken ?? ""
+                    OAuthAPI().populateAccesstoken(request: request) { response in
+                        switch response {
+                        case .success(let response):
+                            let accessToken = response?.accessToken ?? ""
                             KeychainSwift().set(
                                 accessToken,
                                 forKey: keyEnum.accessToken.rawValue
                             )
 
                             Helper.convertRootViewController(scene)
-                        default:
-                            print(statusCode ?? 0, NetworkError.redirection)
+                        case .failure(let error):
+                            print(error)
                             Helper.convertRootViewController(scene)
                         }
                     }

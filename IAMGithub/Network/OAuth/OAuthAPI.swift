@@ -7,11 +7,22 @@
 
 import Moya
 
-class OAuthAPI {
+protocol OAuthAPIProtocol {
+    func authorizeOnGithub()
+    func populateAccesstoken(
+        request: AccesstokenRequest,
+        completion: @escaping (Result<AccesstokenResponse?, NetworkError>) -> Void
+    )
+}
 
-    static private let service = MoyaProvider<OAuthTarget>()
+final class OAuthAPI {
+    let service: MoyaProvider<OAuthTarget>
+    init() { service = MoyaProvider<OAuthTarget>() }
+}
 
-    static func authorizeOnGithub() {
+extension OAuthAPI: OAuthAPIProtocol {
+
+    func authorizeOnGithub() {
         let client_id = Bundle.main.clientID
         let scope = "repo,user"
 
@@ -24,22 +35,20 @@ class OAuthAPI {
         }
     }
 
-    static func populateAccesstoken(
+    func populateAccesstoken(
         request: AccesstokenRequest,
-        completion: @escaping (
-            _ succeed: AccesstokenResponse?,
-            _ failed: Error?,
-            _ statusCode: Int?
-        ) -> Void
+        completion: @escaping (Result<AccesstokenResponse?, NetworkError>) -> Void
     ) {
         service.request(.accesstoken(request)) { result in
             switch result {
             case .success(let response):
                 let accesstokenResponse = try? response.map(AccesstokenResponse.self)
-                completion(accesstokenResponse, nil, response.statusCode)
+                completion(.success(accesstokenResponse))
             case .failure(let error):
                 print("[populateAccesstoken] error", error)
-                completion(nil, error, error.response?.statusCode)
+                completion(.failure(
+                    NetworkError(rawValue: error.response?.statusCode ?? -1) ?? .unknown)
+                )
             }
         }
     }

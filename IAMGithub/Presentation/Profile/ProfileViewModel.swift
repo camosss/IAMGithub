@@ -12,20 +12,39 @@ import RxCocoa
 
 class ProfileViewModel {
 
+    weak var viewController: ProfileViewController?
+
     var user: UserResponse?
-    var repos = BehaviorSubject<[UserReposResponse]>(value: [])
+    var repos = BehaviorRelay<[UserReposResponse]>(value: [])
 
     private let userAPI: UserAPIProtocol
+    private let disposeBag = DisposeBag()
 
     init(userAPI: UserAPIProtocol = UserAPI()) {
         self.userAPI = userAPI
     }
 
-    func populateUserData(accessToken: String) -> Observable<UserResponse?> {
+    func populateUserData(accessToken: String) {
         userAPI.populateUserData(accessToken: accessToken)
+            .subscribe(onNext: { user in
+                if let user = user {
+                    self.user = user
+                    self.populateUserRepos(user: user)
+                    self.viewController?.configureRightBarButtonItem(Token.accessToken, user)
+                } else {
+                    self.viewController?.configureRightBarButtonItem(Token.accessToken, nil)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
-    func populateUserRepos(user: UserResponse) -> Observable<[UserReposResponse]?> {
+    private func populateUserRepos(user: UserResponse) {
         userAPI.populateUserRepos(user: user)
+            .subscribe(onNext: { repos in
+                if let repos = repos {
+                    self.repos.accept(repos)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }

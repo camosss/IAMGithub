@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Color.background
         configureLeftBarButtonItem()
-        populateUserData()
         setUpTableView()
     }
 
@@ -46,41 +45,18 @@ class ProfileViewController: UIViewController {
     }
 
     private func binding() {
+        viewModel.viewController = self
+
         viewModel.repos
-            .observe(on: MainScheduler.instance)
-            .bind(to: tableView.rx.items(
+            .asDriver()
+            .drive(tableView.rx.items(
                 cellIdentifier: RepositoryTableViewCell.reuseIdentifier,
                 cellType: RepositoryTableViewCell.self
             )) { index, item, cell in
                 cell.updateUI(repo: item)
             }
             .disposed(by: disposeBag)
-    }
 
-    private func populateUserData() {
-        viewModel
-            .populateUserData(accessToken: Token.accessToken)
-            .subscribe(onNext: { user in
-                if let user = user {
-                    self.viewModel.user = user
-                    self.configureRightBarButtonItem(Token.accessToken, user)
-                    self.populateUserRepos(user: user)
-                } else {
-                    self.view.makeToast("\(NetworkError.login)", position: .center)
-                    self.configureRightBarButtonItem(Token.accessToken, nil)
-                }
-            })
-            .disposed(by: disposeBag)
-    }
-
-    private func populateUserRepos(user: UserResponse) {
-        viewModel
-            .populateUserRepos(user: user)
-            .subscribe(onNext: { repos in
-                if let repos = repos {
-                    self.viewModel.repos.onNext(repos)
-                }
-            })
-            .disposed(by: disposeBag)
+        viewModel.populateUserData(accessToken: Token.accessToken)
     }
 }
