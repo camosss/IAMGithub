@@ -52,6 +52,6 @@ final class RepositoryTableViewCell: UITableViewCell {
     func updateUI(repo: UserReposResponse) {
         repoLabel.text = repo.name
         repoDescriptionLabel.text = repo.description
-        dateLabel.text = repo.pushedAt
+        dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()
     }
 }
