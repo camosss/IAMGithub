@@ -53,6 +53,9 @@ class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 100
+
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.register(RepositoryTableViewCell.self,
             forCellReuseIdentifier: RepositoryTableViewCell.reuseIdentifier)
@@ -100,6 +103,6 @@ extension ProfileViewController: UITableViewDelegate {
         _ tableView: UITableView,
         heightForHeaderInSection section: Int
     ) -> CGFloat {
-        return 180
+        return UITableView.automaticDimension
     }
 }

@@ -93,6 +93,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         followStack.snp.makeConstraints { make in
             make.top.equalTo(infoStack.snp.bottom).offset(24)
             make.leading.equalTo(profileImageView)
+            make.bottom.equalToSuperview().inset(24)
         }
     }
     
