@@ -13,11 +13,8 @@ import KeychainSwift
 
 extension UIViewController {
     func configureLeftBarButtonItem() {
-        let label = UILabel().then {
-            $0.text = "Github"
-            $0.textColor = UIColor.label
-            $0.font = .navigationTitle
-        }
+        let label = DefaultLabel(font: .navigationTitle, textColor: .label)
+        label.text = "Github"
 
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)

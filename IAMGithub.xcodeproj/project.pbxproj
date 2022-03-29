@@ -10,6 +10,7 @@
 		03B091647BEC52487C3FB0D0 /* Pods_IAMGithub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B470554EA661C7162C10B2 /* Pods_IAMGithub.framework */; };
 		B434138527F1FF98005A58BE /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138427F1FF98005A58BE /* ProfileHeaderView.swift */; };
 		B434138827F20F7D005A58BE /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138727F20F7D005A58BE /* ProfileSection.swift */; };
+		B434138B27F2D153005A58BE /* DefaultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138A27F2D153005A58BE /* DefaultLabel.swift */; };
 		B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BB27D22FA000F04925 /* UserReposResponse.swift */; };
 		B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */; };
 		B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */; };
@@ -43,6 +44,7 @@
 		A7CBEBAED8076C5052958824 /* Pods-IAMGithub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAMGithub.release.xcconfig"; path = "Target Support Files/Pods-IAMGithub/Pods-IAMGithub.release.xcconfig"; sourceTree = "<group>"; };
 		B434138427F1FF98005A58BE /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		B434138727F20F7D005A58BE /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
+		B434138A27F2D153005A58BE /* DefaultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLabel.swift; sourceTree = "<group>"; };
 		B44F22BB27D22FA000F04925 /* UserReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReposResponse.swift; sourceTree = "<group>"; };
 		B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 			path = Section;
 			sourceTree = "<group>";
 		};
+		B434138927F2D142005A58BE /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				B434138A27F2D153005A58BE /* DefaultLabel.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		B44F22BD27D23B1300F04925 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 				B4523BDD27CE143D00BF0204 /* Presentation */,
 				B45CB21B27CE21D5005399DA /* Network */,
 				B4DCABA127F19E7F0014B6FB /* Constants */,
+				B434138927F2D142005A58BE /* Custom */,
 				B45CB22327CE2240005399DA /* Service */,
 				B45CB23127CE2465005399DA /* Extension */,
 				B4523BDC27CE122F00BF0204 /* Application */,
@@ -408,6 +419,7 @@
 				B4DCABA627F19EB20014B6FB /* UIColor+Extension.swift in Sources */,
 				B45CB22227CE2202005399DA /* OAuthAPI.swift in Sources */,
 				B4523BC927CE11F100BF0204 /* AppDelegate.swift in Sources */,
+				B434138B27F2D153005A58BE /* DefaultLabel.swift in Sources */,
 				B434138527F1FF98005A58BE /* ProfileHeaderView.swift in Sources */,
 				B44F22BC27D22FA000F04925 /* UserReposResponse.swift in Sources */,
 				B4523BE027CE145C00BF0204 /* ProfileViewController.swift in Sources */,

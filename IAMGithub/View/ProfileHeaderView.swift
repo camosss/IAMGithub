@@ -18,71 +18,44 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         $0.isUserInteractionEnabled = true
     }
 
-    let nameLabel = UILabel().then {
-        $0.textColor = .label
-        $0.font = .navigationTitle
-    }
+    let nameLabel = DefaultLabel(font: .navigationTitle, textColor: .label)
+    let usernameLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    let bioLabel = DefaultLabel(font: .body, textColor: .gray, numberOfLines: 0)
 
-    let usernameLabel = UILabel().then {
-        $0.textColor = .label
-        $0.font = .subtitle
-    }
+    let followerCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    let followingCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    let followerLabel = DefaultLabel(font: .body, textColor: .gray)
+    let followingLabel = DefaultLabel(font: .body, textColor: .gray)
 
-    let bioLabel = UILabel().then {
-        $0.textColor = .gray
-        $0.font = .body
-        $0.numberOfLines = 0
-    }
+    // MARK: - UIStackView
 
     lazy var infoStack = UIStackView(
-        arrangedSubviews: [
-            nameLabel,
-            usernameLabel,
-            bioLabel
-        ]).then {
-            $0.axis = .vertical
-            $0.spacing = 8
-        }
-
-    let followerCountLabel = UILabel().then {
-        $0.textColor = .label
-        $0.font = .subtitle
-    }
-
-    let followerLabel = UILabel().then {
-        $0.text = "follower"
-        $0.textColor = .gray
-        $0.font = .body
+        arrangedSubviews: [nameLabel, usernameLabel, bioLabel]
+    ).then {
+        $0.axis = .vertical
+        $0.spacing = 8
     }
 
     lazy var followerStack = UIStackView(
-        arrangedSubviews: [
-            followerCountLabel,
-            followerLabel
-        ]).then {
-            $0.axis = .horizontal
-            $0.spacing = 3
-        }
-
-    let followingCountLabel = UILabel().then {
-        $0.textColor = .label
-        $0.font = .subtitle
+        arrangedSubviews: [followerCountLabel,followerLabel]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 3
     }
 
-    let followingLabel = UILabel().then {
-        $0.text = "following"
-        $0.textColor = .gray
-        $0.font = .body
-    }
-    
     lazy var followingStack = UIStackView(
-        arrangedSubviews: [
-            followingCountLabel,
-            followingLabel
-        ]).then {
-            $0.axis = .horizontal
-            $0.spacing = 3
-        }
+        arrangedSubviews: [followingCountLabel, followingLabel]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 3
+    }
+
+    lazy var followStack = UIStackView(
+        arrangedSubviews: [followerStack, followingStack]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 5
+    }
 
     // MARK: - Lifecycle
 
@@ -101,10 +74,9 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     private func setView() {
         addSubview(profileImageView)
         addSubview(infoStack)
-        addSubview(followerStack)
-        addSubview(followingStack)
+        addSubview(followStack)
     }
-    
+
     private func setConstraints() {
         profileImageView.snp.makeConstraints { make in
             make.top.equalTo(24)
@@ -118,14 +90,9 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
             make.trailing.equalToSuperview().inset(16)
         }
 
-        followerStack.snp.makeConstraints { make in
-            make.top.equalTo(infoStack.snp.bottom).offset(16)
+        followStack.snp.makeConstraints { make in
+            make.top.equalTo(infoStack.snp.bottom).offset(24)
             make.leading.equalTo(profileImageView)
-        }
-
-        followingStack.snp.makeConstraints { make in
-            make.top.equalTo(followerStack)
-            make.leading.equalTo(followerStack.snp.trailing).offset(8)
         }
     }
     
@@ -135,6 +102,8 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         usernameLabel.text = user.username
         bioLabel.text = user.bio
 
+        followerLabel.text = "follower"
+        followingLabel.text = "following"
         followerCountLabel.text = "\(user.followers)"
         followingCountLabel.text = "\(user.following)"
     }

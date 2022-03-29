@@ -12,21 +12,11 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    let repoLabel = UILabel().then {
-        $0.textColor = .repoTitle
-        $0.font = .title
-    }
+    let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
+    let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
+    let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
 
-    let repoDescriptionLabel = UILabel().then {
-        $0.textColor = .basic
-        $0.font = .body
-        $0.numberOfLines = 0
-    }
-
-    let dateLabel = UILabel().then {
-        $0.textColor = .gray
-        $0.font = .subBody
-    }
+    // MARK: - UIStackView
 
     lazy var stack = UIStackView(
         arrangedSubviews: [repoLabel, repoDescriptionLabel, dateLabel]
