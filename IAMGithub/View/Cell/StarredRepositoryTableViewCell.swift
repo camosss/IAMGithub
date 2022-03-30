@@ -84,7 +84,7 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
         }
     }
 
-    func updateUI(repo: Item) {
+    func updateUI(repo: Repository) {
         profileImageView.setImage(image: repo.owner.avatarURL)
         repoLabel.text = repo.name
         repoDescriptionLabel.text = repo.itemDescription

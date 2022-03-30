@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias UserStarredRepoResponse = [Item]
+typealias UserStarredRepoResponse = [Repository]
 
-struct Item: Codable {
+struct Repository: Codable {
     let name: String
     let fullName: String
     let owner: Owner
