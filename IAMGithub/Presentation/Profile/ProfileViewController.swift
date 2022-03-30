@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: RepositoryTableViewCell.reuseIdentifier
                 ) as! RepositoryTableViewCell
-
+                cell.selectionStyle = .none
                 cell.updateUI(repo: item)
                 return cell
             }
@@ -72,6 +72,7 @@ class ProfileViewController: UIViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] user in
                 self?.headerView.updateUI(user: user)
+                self?.convertStarVC(user: user)
             })
             .disposed(by: disposeBag)
 
@@ -87,6 +88,16 @@ class ProfileViewController: UIViewController {
 
         viewModel.populateUserData(accessToken: Token.accessToken)
     }
+
+    private func convertStarVC(user: UserResponse) {
+        headerView.starredRepoButton
+            .rx.tap
+            .bind {
+                let controller = StarViewController(user: user)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -97,12 +108,5 @@ extension ProfileViewController: UITableViewDelegate {
         viewForHeaderInSection section: Int
     ) -> UIView? {
         return headerView
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        heightForHeaderInSection section: Int
-    ) -> CGFloat {
-        return UITableView.automaticDimension
     }
 }

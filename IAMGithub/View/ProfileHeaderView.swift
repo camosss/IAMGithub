@@ -19,13 +19,19 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     }
 
     let nameLabel = DefaultLabel(font: .navigationTitle, textColor: .label)
-    let usernameLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    let usernameLabel = DefaultLabel(font: .title, textColor: .label)
     let bioLabel = DefaultLabel(font: .body, textColor: .gray, numberOfLines: 0)
 
     let followerCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
     let followingCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
     let followerLabel = DefaultLabel(font: .body, textColor: .gray)
     let followingLabel = DefaultLabel(font: .body, textColor: .gray)
+
+    let starredRepoButton = UIButton().then {
+        $0.titleLabel?.font = .body
+        $0.setTitleColor(.label, for: .normal)
+        $0.layer.cornerRadius = 8
+    }
 
     // MARK: - UIStackView
 
@@ -75,6 +81,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(profileImageView)
         addSubview(infoStack)
         addSubview(followStack)
+        addSubview(starredRepoButton)
     }
 
     private func setConstraints() {
@@ -95,13 +102,23 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
             make.leading.equalTo(profileImageView)
             make.bottom.equalToSuperview().inset(24)
         }
+
+        starredRepoButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(followStack).offset(3)
+            make.width.equalTo(70)
+            make.height.equalTo(35)
+        }
     }
-    
+
     func updateUI(user: UserResponse) {
         profileImageView.setImage(image: user.avatarURL)
         nameLabel.text = user.name
         usernameLabel.text = user.username
         bioLabel.text = user.bio
+
+        starredRepoButton.setTitle("Starred", for: .normal)
+        starredRepoButton.backgroundColor = .gray2
 
         followerLabel.text = "follower"
         followingLabel.text = "following"

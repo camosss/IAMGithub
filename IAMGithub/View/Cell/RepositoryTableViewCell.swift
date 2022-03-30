@@ -18,7 +18,7 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - UIStackView
 
-    lazy var stack = UIStackView(
+    lazy var labelStack = UIStackView(
         arrangedSubviews: [repoLabel, repoDescriptionLabel, dateLabel]
     ).then {
         $0.axis = .vertical
@@ -40,11 +40,11 @@ final class RepositoryTableViewCell: UITableViewCell {
     // MARK: - Helpers
 
     private func setUI() {
-        addSubview(stack)
+        addSubview(labelStack)
     }
 
     private func setupConstraints() {
-        stack.snp.makeConstraints { make in
+        labelStack.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(16)
         }
     }

@@ -10,6 +10,7 @@ import Moya
 enum UserTarget {
     case populateUserData(accessToken: String)
     case populateUserRepos(UserResponse)
+    case populateStarredRepos(UserResponse)
 }
 
 extension UserTarget: TargetType {
@@ -23,13 +24,17 @@ extension UserTarget: TargetType {
             return "user"
         case .populateUserRepos(let user):
             return "users/\(user.username)/repos"
+        case .populateStarredRepos(user: let user):
+            return "users/\(user.username)/starred"
         }
     }
 
     var method: Method {
         switch self {
         case .populateUserData,
-                .populateUserRepos: return .get
+                .populateUserRepos,
+                .populateStarredRepos:
+            return .get
         }
     }
 
@@ -41,7 +46,8 @@ extension UserTarget: TargetType {
         switch self {
         case .populateUserData(let accessToken):
             return ["Authorization": "token \(accessToken)"]
-        case .populateUserRepos(_):
+        case .populateUserRepos(_),
+                .populateStarredRepos:
             return nil
         }
     }
