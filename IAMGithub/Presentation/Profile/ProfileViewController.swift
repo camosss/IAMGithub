@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import RxSwift
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
     // MARK: - Properties
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertHelper {
+final class AlertHelper {
     static func actionSheetAlert(
         title: String,
         completion: @escaping () -> (),

@@ -98,7 +98,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         }
 
         followStack.snp.makeConstraints { make in
-            make.top.equalTo(infoStack.snp.bottom).offset(24)
+            make.top.equalTo(infoStack.snp.bottom).offset(16)
             make.leading.equalTo(profileImageView)
             make.bottom.equalToSuperview().inset(24)
         }
@@ -120,9 +120,9 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         starredRepoButton.setTitle("★ Starred", for: .normal)
         starredRepoButton.backgroundColor = .label
 
-        followerLabel.text = "follower"
+        followerLabel.text = "followers"
         followingLabel.text = "following"
         followerCountLabel.text = "\(user.followers)"
-        followingCountLabel.text = "\(user.following)"
+        followingCountLabel.text = "・ \(user.following)"
     }
 }

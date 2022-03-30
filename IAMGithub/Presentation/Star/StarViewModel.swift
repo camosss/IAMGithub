@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class StarViewModel {
+final class StarViewModel {
 
     var starredRepos = BehaviorRelay<UserStarredRepoResponse>(value: [])
 

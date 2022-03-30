@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class ProfileViewModel {
+final class ProfileViewModel {
 
     weak var viewController: ProfileViewController?
 

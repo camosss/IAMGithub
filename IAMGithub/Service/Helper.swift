@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Helper {
+final class Helper {
     static func convertRootViewController(_ scene: UIScene?) {
         DispatchQueue.main.async {
             if let sceneDelegate: SceneDelegate = (scene?.delegate as? SceneDelegate) {
