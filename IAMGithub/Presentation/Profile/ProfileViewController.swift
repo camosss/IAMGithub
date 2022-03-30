@@ -45,6 +45,11 @@ class ProfileViewController: UIViewController {
         setUpTableView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     // MARK: - Helpers
 
     private func setUpTableView() {
