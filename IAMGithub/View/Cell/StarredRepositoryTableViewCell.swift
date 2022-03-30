@@ -11,7 +11,7 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    lazy var profileImageView = UIImageView().then {
+    private lazy var profileImageView = UIImageView().then {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 50 / 2
@@ -23,10 +23,10 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
         $0.tintColor = .star
     }
 
-    let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
-    let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
-    let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
-    let starCountLabel = DefaultLabel(font: .body, textColor: .label)
+    private let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
+    private let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
+    private let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
+    private let starCountLabel = DefaultLabel(font: .body, textColor: .label)
 
     // MARK: - UIStackView
 

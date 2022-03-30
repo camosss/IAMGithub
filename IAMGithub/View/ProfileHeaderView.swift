@@ -11,21 +11,21 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
 
-    lazy var profileImageView = UIImageView().then {
+    private lazy var profileImageView = UIImageView().then {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 70 / 2
         $0.isUserInteractionEnabled = true
     }
 
-    let nameLabel = DefaultLabel(font: .navigationTitle, textColor: .label)
-    let usernameLabel = DefaultLabel(font: .title, textColor: .label)
-    let bioLabel = DefaultLabel(font: .body, textColor: .gray, numberOfLines: 0)
+    private let nameLabel = DefaultLabel(font: .navigationTitle, textColor: .label)
+    private let usernameLabel = DefaultLabel(font: .title, textColor: .label)
+    private let bioLabel = DefaultLabel(font: .body, textColor: .gray, numberOfLines: 0)
 
-    let followerCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
-    let followingCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
-    let followerLabel = DefaultLabel(font: .body, textColor: .gray)
-    let followingLabel = DefaultLabel(font: .body, textColor: .gray)
+    private let followerCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    private let followingCountLabel = DefaultLabel(font: .subtitle, textColor: .label)
+    private let followerLabel = DefaultLabel(font: .body, textColor: .gray)
+    private let followingLabel = DefaultLabel(font: .body, textColor: .gray)
 
     let starredRepoButton = UIButton().then {
         $0.titleLabel?.font = .body

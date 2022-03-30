@@ -12,9 +12,9 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
-    let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
-    let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
+    private let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
+    private let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
+    private let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
 
     // MARK: - UIStackView
 
