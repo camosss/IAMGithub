@@ -23,9 +23,6 @@ extension UIColor {
     static var gray: UIColor {
         return UIColor.lightGray
     }
-    static var gray2: UIColor {
-        return UIColor.systemGray6
-    }
     static var star: UIColor {
         return UIColor.systemYellow
     }

@@ -21,7 +21,6 @@ enum Color {
     case secondBackground
     case repoTitle
     case gray
-    case gray2
     case star
 }
 

@@ -29,7 +29,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
 
     let starredRepoButton = UIButton().then {
         $0.titleLabel?.font = .body
-        $0.setTitleColor(.label, for: .normal)
+        $0.setTitleColor(.background, for: .normal)
         $0.layer.cornerRadius = 8
     }
 
@@ -105,8 +105,8 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
 
         starredRepoButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
-            make.bottom.equalTo(followStack).offset(3)
-            make.width.equalTo(70)
+            make.bottom.equalTo(followStack).offset(8)
+            make.width.equalTo(80)
             make.height.equalTo(35)
         }
     }
@@ -117,8 +117,8 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         usernameLabel.text = user.username
         bioLabel.text = user.bio
 
-        starredRepoButton.setTitle("Starred", for: .normal)
-        starredRepoButton.backgroundColor = .gray2
+        starredRepoButton.setTitle("★ Starred", for: .normal)
+        starredRepoButton.backgroundColor = .label
 
         followerLabel.text = "follower"
         followingLabel.text = "following"
