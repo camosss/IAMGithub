@@ -12,7 +12,7 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    private let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
+    let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
     private let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
     private let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
 
@@ -40,7 +40,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     // MARK: - Helpers
 
     private func setUI() {
-        addSubview(labelStack)
+        contentView.addSubview(labelStack)
     }
 
     private func setupConstraints() {

@@ -86,7 +86,7 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
 
     func updateUI(repo: Repository) {
         profileImageView.setImage(image: repo.owner.avatarURL)
-        repoLabel.text = repo.name
+        repoLabel.text = repo.fullName
         repoDescriptionLabel.text = repo.itemDescription
         dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()
         starCountLabel.text = "\(Double(repo.stargazersCount).kmFormatted)"

@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxDataSources
+import RxGesture
 import RxSwift
 
 final class ProfileViewController: UIViewController {
@@ -31,6 +32,16 @@ final class ProfileViewController: UIViewController {
                 ) as! RepositoryTableViewCell
                 cell.selectionStyle = .none
                 cell.updateUI(repo: item)
+
+                /// 인덱스별 아이템에 접근?
+                cell.repoLabel
+                    .rx.tapGesture()
+                    .when(.recognized)
+                    .subscribe(onNext: { _ in
+                        print("tap", item.name) /// 웹뷰로 전환
+                    })
+                    .disposed(by: self.disposeBag)
+
                 return cell
             }
         }
