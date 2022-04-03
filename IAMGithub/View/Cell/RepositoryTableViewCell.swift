@@ -19,7 +19,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     // MARK: - UIStackView
 
     lazy var labelStack = UIStackView(
-        arrangedSubviews: [repoLabel, repoDescriptionLabel, dateLabel]
+        arrangedSubviews: [repoDescriptionLabel, dateLabel]
     ).then {
         $0.axis = .vertical
         $0.spacing = 8
@@ -40,12 +40,18 @@ final class RepositoryTableViewCell: UITableViewCell {
     // MARK: - Helpers
 
     private func setUI() {
+        contentView.addSubview(repoLabel)
         contentView.addSubview(labelStack)
     }
 
     private func setupConstraints() {
+        repoLabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(16)
+        }
+
         labelStack.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(16)
+            make.top.equalTo(repoLabel.snp.bottom).offset(8)
+            make.leading.trailing.bottom.equalToSuperview().inset(16)
         }
     }
 

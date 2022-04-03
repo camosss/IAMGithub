@@ -86,5 +86,6 @@ final class DetailHeaderView: UIView {
         repoLabel.text = repo.name
         ownerLabel.text = repo.owner.login
         starCountLabel.text = "\(Double(repo.stargazersCount).kmFormatted)"
+        starCountLabel.textAlignment = .center
     }
 }
