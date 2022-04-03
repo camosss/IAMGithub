@@ -16,10 +16,15 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
         $0.contentMode = .scaleAspectFill
         $0.layer.cornerRadius = 50 / 2
         $0.isUserInteractionEnabled = true
+        $0.image = UIImage()
     }
 
-    let starButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "star"), for: .normal)
+    private let starButton = UIButton().then {
+        let starImage = UIImage(systemName: "star")
+        let selectedStarImage = UIImage(systemName: "star.fill")
+        $0.setImage(starImage, for: .normal)
+        $0.setImage(selectedStarImage, for: .selected)
+        $0.contentMode = .scaleAspectFit
         $0.tintColor = .star
     }
 
@@ -30,14 +35,14 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
 
     // MARK: - UIStackView
 
-    lazy var labelStack = UIStackView(
+    private lazy var labelStack = UIStackView(
         arrangedSubviews: [repoLabel, repoDescriptionLabel, dateLabel]
     ).then {
         $0.axis = .vertical
         $0.spacing = 8
     }
 
-    lazy var starStack = UIStackView(
+    private lazy var starStack = UIStackView(
         arrangedSubviews: [starButton, starCountLabel]
     ).then {
         $0.axis = .vertical
@@ -87,7 +92,7 @@ final class StarredRepositoryTableViewCell: UITableViewCell {
     func updateUI(repo: Repository) {
         profileImageView.setImage(image: repo.owner.avatarURL)
         repoLabel.text = repo.fullName
-        repoDescriptionLabel.text = repo.itemDescription
+        repoDescriptionLabel.text = repo.description
         dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()
         starCountLabel.text = "\(Double(repo.stargazersCount).kmFormatted)"
         starCountLabel.textAlignment = .center

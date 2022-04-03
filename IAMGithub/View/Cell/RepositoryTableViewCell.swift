@@ -49,7 +49,7 @@ final class RepositoryTableViewCell: UITableViewCell {
         }
     }
 
-    func updateUI(repo: UserReposResponse) {
+    func updateUI(repo: Repository) {
         repoLabel.text = repo.name
         repoDescriptionLabel.text = repo.description
         dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()

@@ -32,16 +32,16 @@ final class ProfileViewController: UIViewController {
                 ) as! RepositoryTableViewCell
                 cell.selectionStyle = .none
                 cell.updateUI(repo: item)
-
-                /// 인덱스별 아이템에 접근?
+                
                 cell.repoLabel
                     .rx.tapGesture()
                     .when(.recognized)
                     .subscribe(onNext: { _ in
-                        print("tap", item.name) /// 웹뷰로 전환
+                        let controller = DetailViewController(repo: item)
+                        self.navigationController?.pushViewController(controller, animated: true)
                     })
                     .disposed(by: self.disposeBag)
-
+                
                 return cell
             }
         }

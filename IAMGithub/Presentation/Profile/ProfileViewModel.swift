@@ -15,7 +15,7 @@ final class ProfileViewModel {
     weak var viewController: ProfileViewController?
 
     var user = PublishRelay<UserResponse>()
-    var repos = BehaviorRelay<[UserReposResponse]>(value: [])
+    var repos = BehaviorRelay<[Repository]>(value: [])
 
     private let userAPI: UserAPIProtocol
     private let disposeBag = DisposeBag()

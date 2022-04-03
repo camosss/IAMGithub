@@ -35,28 +35,28 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - UIStackView
 
-    lazy var infoStack = UIStackView(
+    private lazy var infoStack = UIStackView(
         arrangedSubviews: [nameLabel, usernameLabel, bioLabel]
     ).then {
         $0.axis = .vertical
         $0.spacing = 8
     }
 
-    lazy var followerStack = UIStackView(
+    private lazy var followerStack = UIStackView(
         arrangedSubviews: [followerCountLabel,followerLabel]
     ).then {
         $0.axis = .horizontal
         $0.spacing = 3
     }
 
-    lazy var followingStack = UIStackView(
+    private lazy var followingStack = UIStackView(
         arrangedSubviews: [followingCountLabel, followingLabel]
     ).then {
         $0.axis = .horizontal
         $0.spacing = 3
     }
 
-    lazy var followStack = UIStackView(
+    private lazy var followStack = UIStackView(
         arrangedSubviews: [followerStack, followingStack]
     ).then {
         $0.axis = .horizontal

@@ -1,5 +1,5 @@
 //
-//  UserStarredRepoResponse.swift
+//  UserRepoResponse.swift
 //  IAMGithub
 //
 //  Created by 강호성 on 2022/03/30.
@@ -10,20 +10,23 @@ import Foundation
 typealias UserStarredRepoResponse = [Repository]
 
 struct Repository: Codable {
+    let id: Int
     let name: String
     let fullName: String
     let owner: Owner
     let pushedAt: String
-    let itemDescription: String?
+    let description: String?
     let stargazersCount: Int
+    let url: String
 
     enum CodingKeys: String, CodingKey {
-        case name
+        case id
+        case name, description
         case fullName = "full_name"
         case owner
-        case itemDescription = "description"
         case pushedAt = "pushed_at"
         case stargazersCount = "stargazers_count"
+        case url = "html_url"
     }
 }
 
@@ -37,3 +40,8 @@ struct Owner: Codable {
     }
 }
 
+extension Repository: Equatable, Identifiable {
+    static func == (lhs: Repository, rhs: Repository) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

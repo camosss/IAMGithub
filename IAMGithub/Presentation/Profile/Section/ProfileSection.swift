@@ -7,13 +7,13 @@
 
 import RxDataSources
 
-typealias RepoItems = [UserReposResponse]
+typealias RepoItems = [Repository]
 
 struct ProfileSection {
 
     typealias ProfileSectionModel = SectionModel<Int, RepoItems>
 
     enum RepoItems: Equatable {
-        case firstItem(UserReposResponse)
+        case firstItem(Repository)
     }
 }
