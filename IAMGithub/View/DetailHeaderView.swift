@@ -33,18 +33,24 @@ final class DetailHeaderView: UIView {
 
     // MARK: - UIStackView
 
-    private lazy var infoStackView: UIStackView = {
-        let nameStackView = UIStackView(arrangedSubviews: [repoLabel, ownerLabel])
-        nameStackView.axis = .vertical
+    private lazy var nameStackView = UIStackView(
+        arrangedSubviews: [repoLabel, ownerLabel]
+    ).then {
+        $0.axis = .vertical
+    }
 
-        let starStackView = UIStackView(arrangedSubviews: [starButton, starCountLabel])
-        starStackView.axis = .vertical
+    private lazy var starStackView = UIStackView(
+        arrangedSubviews: [starButton, starCountLabel]
+    ).then {
+        $0.axis = .vertical
+    }
 
-        let stackView = UIStackView(arrangedSubviews: [profileImageView, nameStackView, starStackView])
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        return stackView
-    }()
+    private lazy var infoStackView = UIStackView(
+        arrangedSubviews: [profileImageView, nameStackView, starStackView]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 8
+    }
 
     // MARK: - Lifecycle
 

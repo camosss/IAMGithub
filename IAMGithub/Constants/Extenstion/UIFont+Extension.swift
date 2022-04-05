@@ -21,6 +21,6 @@ extension UIFont {
         return UIFont.systemFont(ofSize: 13)
     }
     static var subBody: UIFont {
-        return UIFont.systemFont(ofSize: 10)
+        return UIFont.systemFont(ofSize: 12)
     }
 }

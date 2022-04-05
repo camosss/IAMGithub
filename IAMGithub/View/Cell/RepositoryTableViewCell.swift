@@ -16,13 +16,32 @@ final class RepositoryTableViewCell: UITableViewCell {
     private let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
     private let dateLabel = DefaultLabel(font: .subBody, textColor: .gray)
 
-    // MARK: - UIStackView
+    private let starImageView = UIImageView(image: UIImage(systemName: "star"))
+    private let starCountLabel = DefaultLabel(font: .body, textColor: .gray)
+    private let forkImageView = UIImageView(image: UIImage(systemName: "scale.3d"))
+    private let forkCountLabel = DefaultLabel(font: .body, textColor: .gray)
 
-    lazy var labelStack = UIStackView(
-        arrangedSubviews: [repoDescriptionLabel, dateLabel]
+    // MARK: - UIStackView
+    
+    private lazy var starStackView = UIStackView(
+        arrangedSubviews: [starImageView, starCountLabel]
     ).then {
-        $0.axis = .vertical
-        $0.spacing = 8
+        $0.axis = .horizontal
+        $0.spacing = 3
+    }
+
+    private lazy var forkStackView = UIStackView(
+        arrangedSubviews: [forkImageView, forkCountLabel]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 3
+    }
+
+    private lazy var bottomStackView = UIStackView(
+        arrangedSubviews: [starStackView, forkStackView, dateLabel]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 16
     }
 
     // MARK: - Lifecycle
@@ -30,6 +49,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
+        setConfiguration()
         setupConstraints()
     }
 
@@ -41,7 +61,13 @@ final class RepositoryTableViewCell: UITableViewCell {
 
     private func setUI() {
         contentView.addSubview(repoLabel)
-        contentView.addSubview(labelStack)
+        contentView.addSubview(repoDescriptionLabel)
+        contentView.addSubview(bottomStackView)
+    }
+
+    private func setConfiguration() {
+        starImageView.tintColor = .gray
+        forkImageView.tintColor = .gray
     }
 
     private func setupConstraints() {
@@ -49,9 +75,14 @@ final class RepositoryTableViewCell: UITableViewCell {
             make.top.leading.equalTo(16)
         }
 
-        labelStack.snp.makeConstraints { make in
+        repoDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(repoLabel.snp.bottom).offset(8)
-            make.leading.trailing.bottom.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+
+        bottomStackView.snp.makeConstraints { make in
+            make.top.equalTo(repoDescriptionLabel.snp.bottom).offset(12)
+            make.leading.bottom.equalToSuperview().inset(16)
         }
     }
 
@@ -59,5 +90,10 @@ final class RepositoryTableViewCell: UITableViewCell {
         repoLabel.text = repo.name
         repoDescriptionLabel.text = repo.description
         dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()
+
+        starStackView.isHidden = repo.stargazersCount == 0 ? true : false
+        forkStackView.isHidden = repo.forksCount == 0 ? true : false
+        starCountLabel.text = "\(repo.stargazersCount)"
+        forkCountLabel.text = "\(repo.forksCount)"
     }
 }

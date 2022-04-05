@@ -18,6 +18,7 @@ struct Repository: Codable {
     let pushedAt: String
     let description: String?
     let stargazersCount: Int
+    let forksCount: Int
     let url: String
 
     enum CodingKeys: String, CodingKey {
@@ -27,6 +28,7 @@ struct Repository: Codable {
         case owner
         case pushedAt = "pushed_at"
         case stargazersCount = "stargazers_count"
+        case forksCount = "forks_count"
         case url = "html_url"
     }
 }
