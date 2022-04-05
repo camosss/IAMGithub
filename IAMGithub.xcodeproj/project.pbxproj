@@ -13,7 +13,7 @@
 		B434138B27F2D153005A58BE /* DefaultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138A27F2D153005A58BE /* DefaultLabel.swift */; };
 		B434138D27F2D613005A58BE /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138C27F2D613005A58BE /* DateFormatter.swift */; };
 		B434139027F43DC5005A58BE /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434138F27F43DC5005A58BE /* StarViewController.swift */; };
-		B434139227F4484B005A58BE /* UserRepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434139127F4484B005A58BE /* UserRepoResponse.swift */; };
+		B434139227F4484B005A58BE /* RepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434139127F4484B005A58BE /* RepoResponse.swift */; };
 		B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */; };
 		B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */; };
 		B4523BC927CE11F100BF0204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523BC827CE11F100BF0204 /* AppDelegate.swift */; };
@@ -54,7 +54,7 @@
 		B434138A27F2D153005A58BE /* DefaultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLabel.swift; sourceTree = "<group>"; };
 		B434138C27F2D613005A58BE /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		B434138F27F43DC5005A58BE /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
-		B434139127F4484B005A58BE /* UserRepoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepoResponse.swift; sourceTree = "<group>"; };
+		B434139127F4484B005A58BE /* RepoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoResponse.swift; sourceTree = "<group>"; };
 		B44F22BE27D23B1900F04925 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		B44F22C027D23B3F00F04925 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
 		B4523BC527CE11F100BF0204 /* IAMGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IAMGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				B45CB23827CE24E3005399DA /* UserResponse.swift */,
-				B434139127F4484B005A58BE /* UserRepoResponse.swift */,
+				B434139127F4484B005A58BE /* RepoResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,7 +472,7 @@
 				B45CB24D27CE5764005399DA /* Keychain+Extension.swift in Sources */,
 				B44F22BF27D23B1900F04925 /* RepositoryTableViewCell.swift in Sources */,
 				B45CB23F27CE280B005399DA /* NetworkError.swift in Sources */,
-				B434139227F4484B005A58BE /* UserRepoResponse.swift in Sources */,
+				B434139227F4484B005A58BE /* RepoResponse.swift in Sources */,
 				B434138D27F2D613005A58BE /* DateFormatter.swift in Sources */,
 				B45CB23927CE24E3005399DA /* UserResponse.swift in Sources */,
 				B45CB23B27CE251B005399DA /* Constants.swift in Sources */,

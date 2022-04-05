@@ -1,5 +1,5 @@
 //
-//  UserRepoResponse.swift
+//  RepoResponse.swift
 //  IAMGithub
 //
 //  Created by 강호성 on 2022/03/30.
@@ -7,6 +7,7 @@
 
 import Foundation
 
+typealias UserRepoResponse = [Repository]
 typealias UserStarredRepoResponse = [Repository]
 
 struct Repository: Codable {

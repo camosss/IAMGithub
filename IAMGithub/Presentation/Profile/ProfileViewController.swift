@@ -36,6 +36,7 @@ final class ProfileViewController: UIViewController {
                 cell.repoLabel
                     .rx.tapGesture()
                     .when(.recognized)
+                    .throttle(.seconds(1), scheduler: MainScheduler.instance)
                     .subscribe(onNext: { _ in
                         let controller = DetailViewController(repo: item)
                         self.navigationController?.pushViewController(controller, animated: true)
