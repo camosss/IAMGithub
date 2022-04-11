@@ -48,6 +48,13 @@ final class ProfileViewController: UIViewController {
         }
     )
 
+    private let searchButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        $0.tintColor = .background
+        $0.backgroundColor = .basic
+        $0.layer.cornerRadius = 64 / 2
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -55,6 +62,7 @@ final class ProfileViewController: UIViewController {
         view.backgroundColor = .background
         configureLeftBarButtonItem()
         setUpTableView()
+        setupSearchButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +88,15 @@ final class ProfileViewController: UIViewController {
             forHeaderFooterViewReuseIdentifier: ProfileHeaderView.reuseIdentifier)
 
         binding()
+    }
+
+    private func setupSearchButton() {
+        view.addSubview(searchButton)
+        searchButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.trailing.equalToSuperview().inset(16)
+            make.width.height.equalTo(64)
+        }
     }
 
     private func binding() {
