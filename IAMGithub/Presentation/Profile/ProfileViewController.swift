@@ -97,6 +97,18 @@ final class ProfileViewController: UIViewController {
             make.trailing.equalToSuperview().inset(16)
             make.width.height.equalTo(64)
         }
+
+        bindingSearchButton()
+    }
+
+    private func bindingSearchButton() {
+        searchButton
+            .rx.tap
+            .bind {
+                let controller = SearchViewController()
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func binding() {
