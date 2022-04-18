@@ -37,8 +37,10 @@ final class SearchViewController: UIViewController {
     }
 
     private func setUpTableView() {
-        view.addSubview(tableView)
         tableView.contentInset.top = 16
+        tableView.keyboardDismissMode = .onDrag
+
+        view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -61,7 +63,16 @@ final class SearchViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        /// searchBar 연결
-        viewModel.populateSearchRepoData(with: "Rx", page: 1)
+        searchBar
+            .rx.searchButtonClicked
+            .withLatestFrom(searchBar.rx.text.orEmpty)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { text in
+                self.viewModel.populateSearchRepoData(with: text, page: 1)
+                self.searchBar.endEditing(true)
+            })
+            .disposed(by: disposeBag)
     }
 }
+
