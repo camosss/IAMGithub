@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 
+import RxSwift
+import RxGesture
+
 final class RepositoryTableViewCell: UITableViewCell {
 
     // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
 
     let repoLabel = DefaultLabel(font: .title, textColor: .repoTitle)
     private let repoDescriptionLabel = DefaultLabel(font: .body, textColor: .basic, numberOfLines: 0)
@@ -95,5 +100,17 @@ final class RepositoryTableViewCell: UITableViewCell {
         forkStackView.isHidden = repo.forksCount == 0 ? true : false
         starCountLabel.text = "\(repo.stargazersCount)"
         forkCountLabel.text = "\(repo.forksCount)"
+    }
+
+    func pushDetailVC(vc: UIViewController, item: Repository) {
+        repoLabel
+            .rx.tapGesture()
+            .when(.recognized)
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                let controller = DetailViewController(repo: item)
+                vc.navigationController?.pushViewController(controller, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 }

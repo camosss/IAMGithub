@@ -32,17 +32,7 @@ final class ProfileViewController: UIViewController {
                 ) as! RepositoryTableViewCell
                 cell.selectionStyle = .none
                 cell.updateUI(repo: item)
-                
-                cell.repoLabel
-                    .rx.tapGesture()
-                    .when(.recognized)
-                    .throttle(.seconds(1), scheduler: MainScheduler.instance)
-                    .subscribe(onNext: { _ in
-                        let controller = DetailViewController(repo: item)
-                        self.navigationController?.pushViewController(controller, animated: true)
-                    })
-                    .disposed(by: self.disposeBag)
-                
+                cell.pushDetailVC(vc: self, item: item)
                 return cell
             }
         }
