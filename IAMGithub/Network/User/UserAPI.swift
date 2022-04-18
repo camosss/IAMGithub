@@ -6,7 +6,6 @@
 //
 
 import RxSwift
-import RxCocoa
 import Moya
 
 protocol UserAPIProtocol {

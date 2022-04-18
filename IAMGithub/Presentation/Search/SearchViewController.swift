@@ -7,9 +7,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class SearchViewController: UIViewController {
-    
+
     // MARK: - Properties
+
+    private let viewModel = SearchViewModel()
+    private let disposeBag = DisposeBag()
 
     private let tableView = UITableView()
     private let searchBar = UISearchBar()
@@ -32,11 +38,38 @@ final class SearchViewController: UIViewController {
 
     private func setUpTableView() {
         view.addSubview(tableView)
+        tableView.contentInset.top = 16
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    
+
         tableView.register(RepositoryTableViewCell.self,
             forCellReuseIdentifier: RepositoryTableViewCell.reuseIdentifier)
+
+        binding()
+    }
+
+    private func binding() {
+        viewModel.repos
+            .asDriver()
+            .drive(tableView.rx.items(
+                cellIdentifier: RepositoryTableViewCell.reuseIdentifier,
+                cellType: RepositoryTableViewCell.self)
+            ) { index, item, cell in
+                cell.updateUI(repo: item)
+                cell.repoLabel
+                    .rx.tapGesture()
+                    .when(.recognized)
+                    .throttle(.seconds(1), scheduler: MainScheduler.instance)
+                    .subscribe(onNext: { _ in
+                        let controller = DetailViewController(repo: item)
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    })
+                    .disposed(by: self.disposeBag)
+            }
+            .disposed(by: disposeBag)
+
+        /// searchBar 연결
+        viewModel.populateSearchRepoData(with: "Rx", page: 1)
     }
 }

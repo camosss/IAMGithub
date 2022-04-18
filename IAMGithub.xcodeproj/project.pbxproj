@@ -44,6 +44,10 @@
 		B472E37C27F9EE6000526569 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B472E37B27F9EE6000526569 /* DetailViewController.swift */; };
 		B472E38027F9F2C400526569 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B472E37F27F9F2C400526569 /* DetailHeaderView.swift */; };
 		B4AE94A8280422EB00124D79 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE94A7280422EB00124D79 /* SearchViewController.swift */; };
+		B4AE94AE280B08CC00124D79 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE94AD280B08CC00124D79 /* SearchViewModel.swift */; };
+		B4B22E7B280D2A40002161A8 /* SearchRepoTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B22E7A280D2A40002161A8 /* SearchRepoTarget.swift */; };
+		B4B22E7D280D2A61002161A8 /* SearchRepoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B22E7C280D2A61002161A8 /* SearchRepoAPI.swift */; };
+		B4B22E80280D2A82002161A8 /* SearchRepoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B22E7F280D2A82002161A8 /* SearchRepoResponse.swift */; };
 		B4DCABA427F19E9D0014B6FB /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCABA327F19E9D0014B6FB /* UIFont+Extension.swift */; };
 		B4DCABA627F19EB20014B6FB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCABA527F19EB20014B6FB /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +92,10 @@
 		B472E37B27F9EE6000526569 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B472E37F27F9F2C400526569 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		B4AE94A7280422EB00124D79 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B4AE94AD280B08CC00124D79 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		B4B22E7A280D2A40002161A8 /* SearchRepoTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoTarget.swift; sourceTree = "<group>"; };
+		B4B22E7C280D2A61002161A8 /* SearchRepoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoAPI.swift; sourceTree = "<group>"; };
+		B4B22E7F280D2A82002161A8 /* SearchRepoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoResponse.swift; sourceTree = "<group>"; };
 		B4DCABA327F19E9D0014B6FB /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		B4DCABA527F19EB20014B6FB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D8AC7A30E2706AD9F51F21A2 /* Pods-IAMGithub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IAMGithub.debug.xcconfig"; path = "Target Support Files/Pods-IAMGithub/Pods-IAMGithub.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 			children = (
 				B45CB21E27CE21F0005399DA /* OAuth */,
 				B45CB23627CE24CF005399DA /* User */,
+				B4B22E79280D2A26002161A8 /* SearchRepo */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -308,8 +317,27 @@
 			isa = PBXGroup;
 			children = (
 				B4AE94A7280422EB00124D79 /* SearchViewController.swift */,
+				B4AE94AD280B08CC00124D79 /* SearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		B4B22E79280D2A26002161A8 /* SearchRepo */ = {
+			isa = PBXGroup;
+			children = (
+				B4B22E7A280D2A40002161A8 /* SearchRepoTarget.swift */,
+				B4B22E7C280D2A61002161A8 /* SearchRepoAPI.swift */,
+				B4B22E7E280D2A75002161A8 /* Models */,
+			);
+			path = SearchRepo;
+			sourceTree = "<group>";
+		};
+		B4B22E7E280D2A75002161A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4B22E7F280D2A82002161A8 /* SearchRepoResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B4DCABA127F19E7F0014B6FB /* Constants */ = {
@@ -460,12 +488,16 @@
 				B45CB23527CE24BF005399DA /* UIImageView+Extension.swift in Sources */,
 				B434138827F20F7D005A58BE /* ProfileSection.swift in Sources */,
 				B44F22C127D23B3F00F04925 /* ReusableView+Extension.swift in Sources */,
+				B4AE94AE280B08CC00124D79 /* SearchViewModel.swift in Sources */,
 				B45CB22027CE21F9005399DA /* OAuthTarget.swift in Sources */,
 				B45CB24327CE2924005399DA /* Helper.swift in Sources */,
 				B472E38027F9F2C400526569 /* DetailHeaderView.swift in Sources */,
 				B472E37727F47AEE00526569 /* Double+Extenstion.swift in Sources */,
+				B4B22E80280D2A82002161A8 /* SearchRepoResponse.swift in Sources */,
+				B4B22E7B280D2A40002161A8 /* SearchRepoTarget.swift in Sources */,
 				B472E37527F45BE800526569 /* StarredRepositoryTableViewCell.swift in Sources */,
 				B4DCABA427F19E9D0014B6FB /* UIFont+Extension.swift in Sources */,
+				B4B22E7D280D2A61002161A8 /* SearchRepoAPI.swift in Sources */,
 				B45CB22E27CE233A005399DA /* AccesstokenRequest.swift in Sources */,
 				B45CB22527CE224A005399DA /* Bundle.swift in Sources */,
 				B4DCABA627F19EB20014B6FB /* UIColor+Extension.swift in Sources */,
