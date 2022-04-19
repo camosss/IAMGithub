@@ -39,6 +39,7 @@ final class SearchViewController: UIViewController {
     private func setUpTableView() {
         tableView.contentInset.top = 16
         tableView.keyboardDismissMode = .onDrag
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -76,3 +77,18 @@ final class SearchViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+
+extension SearchViewController: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+
+        if offsetY > (contentHeight - height) {
+            if self.viewModel.repos.value.count >= 30 {
+                /// paing
+            }
+        }
+    }
+}

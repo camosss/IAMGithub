@@ -26,8 +26,23 @@ final class RepositoryTableViewCell: UITableViewCell {
     private let forkImageView = UIImageView(image: UIImage(systemName: "scale.3d"))
     private let forkCountLabel = DefaultLabel(font: .body, textColor: .gray)
 
+    lazy var profileImageView = UIImageView().then {
+        $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = 30 / 2
+        $0.isUserInteractionEnabled = true
+        $0.image = UIImage()
+    }
+
     // MARK: - UIStackView
     
+    private lazy var titleStackView = UIStackView(
+        arrangedSubviews: [profileImageView, repoLabel]
+    ).then {
+        $0.axis = .horizontal
+        $0.spacing = 8
+    }
+
     private lazy var starStackView = UIStackView(
         arrangedSubviews: [starImageView, starCountLabel]
     ).then {
@@ -65,7 +80,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     // MARK: - Helpers
 
     private func setUI() {
-        contentView.addSubview(repoLabel)
+        contentView.addSubview(titleStackView)
         contentView.addSubview(repoDescriptionLabel)
         contentView.addSubview(bottomStackView)
     }
@@ -76,12 +91,16 @@ final class RepositoryTableViewCell: UITableViewCell {
     }
 
     private func setupConstraints() {
-        repoLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(16)
+        titleStackView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(16)
+        }
+
+        profileImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(30)
         }
 
         repoDescriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(repoLabel.snp.bottom).offset(8)
+            make.top.equalTo(titleStackView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
         }
 
@@ -92,14 +111,15 @@ final class RepositoryTableViewCell: UITableViewCell {
     }
 
     func updateUI(repo: Repository) {
+        profileImageView.setImage(image: repo.owner.avatarURL)
         repoLabel.text = repo.name
         repoDescriptionLabel.text = repo.description
         dateLabel.text = repo.pushedAt.toDate.getElapsedInterval()
 
         starStackView.isHidden = repo.stargazersCount == 0 ? true : false
         forkStackView.isHidden = repo.forksCount == 0 ? true : false
-        starCountLabel.text = "\(repo.stargazersCount)"
-        forkCountLabel.text = "\(repo.forksCount)"
+        starCountLabel.text = "\(Double(repo.stargazersCount).kmFormatted)"
+        forkCountLabel.text = "\(Double(repo.forksCount).kmFormatted)"
     }
 
     func pushDetailVC(vc: UIViewController, item: Repository) {

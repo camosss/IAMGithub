@@ -30,9 +30,12 @@ final class ProfileViewController: UIViewController {
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: RepositoryTableViewCell.reuseIdentifier
                 ) as! RepositoryTableViewCell
+
                 cell.selectionStyle = .none
                 cell.updateUI(repo: item)
                 cell.pushDetailVC(vc: self, item: item)
+                cell.profileImageView.isHidden = true
+
                 return cell
             }
         }
@@ -40,8 +43,8 @@ final class ProfileViewController: UIViewController {
 
     private let searchButton = UIButton().then {
         $0.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        $0.tintColor = .background
-        $0.backgroundColor = .basic
+        $0.tintColor = .white
+        $0.backgroundColor = .repoTitle
         $0.layer.cornerRadius = 64 / 2
     }
 
